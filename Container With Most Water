@@ -1,0 +1,18 @@
+class Solution {
+    public int maxArea(int[] height) {
+        int n=height.length;int maxx=0;
+        int left=0,right=n-1;
+      while(left<right)
+             {  // System.out.println("j:"+j+" i:"+i+" height[i]:"+height[i]+" height[j]:"+height[j]);
+                 maxx=Math.max((right-left)*(int)(Math.min(height[left],height[right])),maxx);
+                 if(height[left]<height[right])
+                 left++;
+                 else 
+                 right--;
+                // System.out.println(maxx);
+
+             }
+        
+        return maxx;
+    }
+}
