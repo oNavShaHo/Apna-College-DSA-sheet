@@ -1,0 +1,60 @@
+class Solution {
+    public boolean search(int[] nums, int target) {
+        int n=nums.length;
+        int start=0;
+        int end = n-1;
+        int mid=0;
+
+        if(n==1)
+        {
+            if(nums[0]==target)
+            return true;
+            else 
+            return false;
+        }
+        if(n==2)
+        {
+            if(nums[0]==target)
+            return true;
+            else if(nums[1]==target)
+            return true;
+            else 
+            return false;
+        }
+        else if(n==3)
+        {
+            if(nums[0]==target)
+            return true;
+            else if(nums[1]==target)
+            return true;
+            else if(nums[2]==target)
+            return true;
+            else 
+            return false;
+        }
+        
+        for(int i=0;i<n-1;i++)
+        {
+            if(nums[i]>nums[i+1]){
+            mid=i+1;
+            break;
+            }
+
+        }
+
+        while(start<end)
+        {
+            if(nums[mid]==target || nums[start]==target || nums[end]==target)
+            return true;
+            
+          else  if(target>nums[start] && mid-1>0 && target<=nums[mid-1])
+             end=mid-1;
+             else 
+             start=mid+1;
+            System.out.println(nums[mid]);
+             mid=(start+end)/2;
+        }
+
+        return false;
+    }
+}
