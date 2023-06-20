@@ -1,0 +1,102 @@
+class Solution {
+    public int[] getAverages(int[] nums, int k) {
+       int a[]=new int[nums.length];
+        long l[]=new long[nums.length];
+        long r[]=new long[nums.length];
+          long sum=0;
+        int n=nums.length;
+       
+        if(k==0)
+        return nums;
+        if(k==1)
+        {
+          for(int i=0;i<n;i++)
+          {
+              if(i>=k &&  i<n-k )
+              {
+                a[i]=nums[i-1]+nums[i]+nums[i+1];
+                a[i]=a[i]/3;
+              }
+              else 
+              a[i]=-1;
+          }
+          return a;
+        }
+        for(int i=0;i<n;i++)
+        {
+           sum+=(long)nums[i]; 
+           l[i]=sum;
+        }
+        sum=0;
+        for(int i=n-1;i>=0;i--)
+        {
+          sum+= (long)nums[i];
+          r[i]=sum; 
+        }
+        int c=0;long ll=0,rr=0;
+         for(int i=0;i<n;i++)
+         {     c=-1;
+                if(i>=k &&  i<n-k )
+              {  if(k%2!=0)
+              {
+                  if(i-1-2>=0 && i+1+3<=n){
+                 // System.out.println(l[i-1]+" "+r[i+1]);
+                  ll=l[i-1];
+                  rr=r[i+1];
+                  if(i-1-k >=0){
+                  ll=l[i-1]-l[i-1-k];
+                //  System.out.println(ll);
+                  }
+                  if(i+1+k<n)
+                  {
+                    rr=r[i+1]-r[i+1+k];
+                   //  System.out.println(rr);
+                  }
+                 
+                   
+                     System.out.println(ll+" "+rr);
+                      long cc=ll+rr+(long)nums[i];
+                      cc=cc/((k*2)+1);
+                     a[i]=(int)cc;
+                   //if()
+                  }
+              }
+              else 
+              {
+                 // System.out.println("No");
+                   if(i-2>=0 && i+3<=n){
+                 // System.out.println(l[i-1]+" "+r[i+1]);
+                  ll=l[i-1];
+                  rr=r[i+1];
+                  if(i-1-k >=0){
+                  ll=l[i-1]-l[i-1-k];
+                //  System.out.println(ll);
+                  }
+                  if(i+1+k<n)
+                  {
+                    rr=r[i+1]-r[i+1+k];
+                   //  System.out.println(rr);
+                  }
+                 
+                   
+                     System.out.println(ll+" "+rr);
+                      long cc=ll+rr+(long)nums[i];
+                      cc=cc/((k*2)+1);
+                     a[i]=(int)cc;
+                   //if()
+                  }
+              }
+                 
+              }
+              
+               else {
+                 a[i]=c;
+               }
+                    
+         }
+       
+
+        return a;
+         
+    }
+}
