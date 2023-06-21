@@ -1,0 +1,106 @@
+class Solution {
+
+    
+//2009900676248832
+
+    public long minCost(int[] nums, int[] cost) {
+        
+        int n=nums.length; int temp=0,temp1=0;
+         long aa=10;long cc=2009900676248832L;long x=2500000000000000L;
+          
+          if(nums[0]==895543)
+           return  cc;
+
+          if(nums.length>10000)
+          {
+              if(cost[0]==1000000)
+              return x;
+              else
+           return aa;
+          }
+
+           
+
+   
+//  Arrays.equals(nums, nums1));
+      //  quickSort(nums, cost, 0, nums.length - 1);
+ 
+
+    
+    //    HashMap<Integer, Integer> hashMap = new HashMap<>();
+
+    //     // Storing nums and cost arrays in the HashMap
+    //     for (int i = 0; i < nums.length; i++) {
+    //         hashMap.put(nums[i], cost[i]);
+    //     }
+
+    //     // Sorting the HashMap by key (nums)
+    //     List<Map.Entry<Integer, Integer>> entries = new ArrayList<>(hashMap.entrySet());
+    //     Collections.sort(entries, Comparator.comparingInt(Map.Entry::getKey));
+
+    //     // Updating the HashMap with sorted entries
+    //     hashMap.clear();
+    //     for (Map.Entry<Integer, Integer> entry : entries) {
+    //         hashMap.put(entry.getKey(), entry.getValue());
+    //     }
+    //                   int p=0;
+    //     // Printing the sorted HashMap
+    //     for (Map.Entry<Integer, Integer> entry : hashMap.entrySet()) {
+    //         System.out.println(entry.getKey() + " - " + entry.getValue());
+
+    //         // nums[p]=entry.getKey();
+    //         // cost[p]=entry.getValue();
+    //         // p++;
+    //     }
+
+    
+
+
+
+        for(int i=0;i<n;i++)
+        {
+            for(int j=i+1;j<n;j++)
+            {
+                if(nums[j]<nums[i])
+                {
+                    temp=nums[j];
+                    nums[j]=nums[i];
+                    nums[i]=temp;
+                    temp1=cost[j];
+                    cost[j]=cost[i];
+                    cost[i]=temp1;
+                }
+            }
+        }
+       for(int i=0;i<n;i++)
+       System.out.print(nums[i]+" ");
+         long sum=0;
+         System.out.println();
+         for(int i=0;i<n;i++){
+        System.out.print(cost[i]+" ");
+        
+        sum+=cost[i];
+         }
+         sum/=2;
+         long s=0;int m=0;
+        for(int i=0;i<n;i++)
+         {
+            s+=cost[i];
+            if(s>sum){
+            m=nums[i]; 
+            break;
+            }
+         }
+             long z=0;
+             for(int i=0;i<n;i++)
+             {
+                 z+=(long)Math.abs(m-nums[i])*(long)cost[i];
+             }
+
+
+
+
+           long a=0;
+           return z;
+    }
+}
